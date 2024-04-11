@@ -49,6 +49,7 @@ return {
         -- "ruff_lsp",
         "debugpy",
         "pyright",
+        "gopls",
       },
     },
   },
