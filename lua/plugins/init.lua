@@ -1,11 +1,11 @@
 return {
-{ "nvim-neotest/nvim-nio" },
+  { "nvim-neotest/nvim-nio" },
   {
-   "rcarriga/nvim-dap-ui",
+    "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
-      local dap = require("dap")
-      local dapui = require("dapui")
+      local dap = require "dap"
+      local dapui = require "dapui"
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
@@ -16,10 +16,10 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-    end
+    end,
   },
   {
-  "mfussenegger/nvim-dap",
+    "mfussenegger/nvim-dap",
   },
 
   {
@@ -29,16 +29,16 @@ return {
       require "configs.conform"
     end,
   },
-{
+  {
     "nvimtools/none-ls.nvim",
-    ft = {"python"},
+    ft = { "python" },
     opts = function()
-      return require("configs.null-ls")
+      return require "configs.null-ls"
     end,
   },
- {
-   "williamboman/mason.nvim",
-   opts = {
+  {
+    "williamboman/mason.nvim",
+    opts = {
       ensure_installed = {
         "lua-language-server",
         "html-lsp",
@@ -59,5 +59,10 @@ return {
       require "configs.lspconfig"
     end,
   },
-
+  {
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false },
+  },
 }
