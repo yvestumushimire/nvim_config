@@ -7,7 +7,14 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+-- Diagnostic keymaps
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
 map("n", "<leader>db", function() require("dap").toggle_breakpoint() end)
 
 map("n", "<leader>dpr", function() require("dap-python").test_method() end)
